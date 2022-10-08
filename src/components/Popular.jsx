@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/dist/css/splide.min.css";
 
 function Popular() {
   //save our retrieve data into a state
@@ -26,21 +28,33 @@ function Popular() {
   //from data base, the website can response accordingly.
   return (
     <div>
-      {popular.map((recipe) => {
-        return (
-          <Wrapper>
-            <h3>Popular Recipe</h3>
-            {popular.map((recipe) => {
-              return (
+      <Wrapper>
+        <h3>Popular Recipe</h3>
+
+        <Splide
+          options={{
+            perPage: 4,
+            drag: "free",
+            gap: "3rem",
+          }}
+        >
+          {popular.map((recipe) => {
+            return (
+              <SplideSlide>
                 <Card>
                   <p>{recipe.title}</p>
-                  <img src={recipe.image} alt={recipe.title} />
+                  <img
+                    src={recipe.image}
+                    width={300}
+                    height={250}
+                    alt={recipe.title}
+                  />
                 </Card>
-              );
-            })}
-          </Wrapper>
-        );
-      })}
+              </SplideSlide>
+            );
+          })}
+        </Splide>
+      </Wrapper>
     </div>
   );
 }
