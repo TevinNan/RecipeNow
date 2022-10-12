@@ -1,12 +1,14 @@
 import Pages from "./pages/Pages";
 import Search from "./components/Search";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <h1>hello</h1>
-      <Search />
-      <Pages />
+      <BrowserRouter>
+        <Search />
+        <Pages />
+      </BrowserRouter>
     </div>
   );
 }
