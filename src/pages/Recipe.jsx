@@ -8,6 +8,7 @@ function Recipe() {
   let params = useParams();
 
   const [details, setDetails] = useState({});
+  const [activeTab, setActiveTab] = useState("instructions");
 
   const fetchDetails = async () => {
     const data = await fetch(
@@ -28,8 +29,18 @@ function Recipe() {
         <img src={details.image} alt="" />
       </div>
       <Info>
-        <Button>Instruction</Button>
-        <Button>Ingredient</Button>
+        <Button
+          className={activeTab === "instructions" ? "active" : ""}
+          onClick={() => setActiveTab("instructions")}
+        >
+          Instruction
+        </Button>
+        <Button
+          className={activeTab === "ingredients" ? "active" : ""}
+          onClick={() => setActiveTab("ingredients")}
+        >
+          Ingredient
+        </Button>
       </Info>
     </DetailWrapper>
   );
