@@ -9,9 +9,18 @@ function Searched() {
 
   const getSearched = async (name) => {
     const data = await fetch(
+<<<<<<< HEAD
       `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_API_KEY}&ingredients=${name}`
     );
     const recipes = await data.json();
+=======
+      `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${process.env.REACT_APP_API_KEY}&ingredients=${name}&number=5&ranking=1`
+      /*`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`*/
+    );
+    const recipes = await data.json();
+    console.log(recipes);
+    console.log(recipes.results);
+>>>>>>> 0eb5b930857425b731b7cbde43d28058d3c1075f
     setSearchedRecipes(recipes);
   };
 
