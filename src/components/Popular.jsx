@@ -18,18 +18,13 @@ function Popular() {
   const getPopular = async () => {
     const check = localStorage.getItem("popular");
 
-    if (check) {
-      //since local is stored as string, we need to parse it back to array
-      setPopular(JSON.parse(check));
-    } else {
-      const api = await fetch(
-          `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
-      );
-      const data = await api.json();
-      localStorage.setItem("popular", JSON.stringify(data.recipes));
-      setPopular(data.recipes);
-      console.log(data);
-    }
+    const api = await fetch(
+        `https://api.spoonacular.com/recipes/findByIngredients/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+    );
+    const data = await api.json();
+    localStorage.setItem("popular", JSON.stringify(data.recipes));
+    setPopular(data.recipes);
+    console.log(data);
   };
 
   //.map is looking through each recipe
